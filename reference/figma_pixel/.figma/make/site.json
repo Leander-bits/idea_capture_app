@@ -1,0 +1,10 @@
+{
+  "description": "Transform ideas into actionable tasks with an AI voice assistant, helping users effortlessly organize and prioritize their thoughts for enhanced productivity.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

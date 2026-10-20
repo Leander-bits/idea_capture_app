@@ -1,0 +1,93 @@
+{
+  "request": {
+    "text": "就是我周天呢呃周末呢没有动力，然后呢我必须写代码，但是我没有动力写，但是我又好想出去吃好吃的，但是又太远了，要花很长时间。然后呢，我又很想化妆拍照，但是呢又很懒。这些事情我分不清楚哪些可以做，然后我还要打扫房间，反正我这个人就是很混乱，分不清主次。",
+    "current_time": "2026-10-11T21:23:00.355363+02:00",
+    "timezone": "Europe/Berlin",
+    "existing_tasks": []
+  },
+  "model_response": {
+    "tasks": [
+      {
+        "title": "写代码",
+        "description": "必须完成的工作任务。",
+        "category": "工作",
+        "horizon": "today",
+        "deadline": null,
+        "suggestedStart": null,
+        "startPeriod": null,
+        "deadlinePeriod": null,
+        "firstStepReason": "完成代码是必须履行的义务。",
+        "firstStep": "打开开发环境或项目文件。",
+        "startSuggested": false,
+        "prioritySuggested": true,
+        "recommendationReason": "写代码是明确义务，优先于其他愿望；其他活动因障碍（距离、懒惰）可稍后安排。",
+        "priority": "medium",
+        "evidence": "我必须写代码",
+        "deadline_evidence": null,
+        "priority_evidence": "必须",
+        "start_evidence": null
+      },
+      {
+        "title": "出去吃好吃的",
+        "description": "想去体验美食，但路途遥远且耗时。",
+        "category": "生活",
+        "horizon": "later",
+        "deadline": null,
+        "suggestedStart": null,
+        "startPeriod": null,
+        "deadlinePeriod": null,
+        "firstStepReason": "美食带来味觉体验，是放松和享受的方式。",
+        "firstStep": "浏览附近的餐厅列表或查看外卖平台。",
+        "startSuggested": true,
+        "prioritySuggested": false,
+        "recommendationReason": "因路途远、耗时长且用户感到混乱，建议放在较后的时间，避免占用今日精力。",
+        "priority": "low",
+        "evidence": "但是我又好想出去吃好吃的",
+        "deadline_evidence": null,
+        "priority_evidence": null,
+        "start_evidence": null
+      },
+      {
+        "title": "化妆拍照",
+        "description": "很想进行，但感到懒惰。",
+        "category": "生活",
+        "horizon": "later",
+        "deadline": null,
+        "suggestedStart": null,
+        "startPeriod": null,
+        "deadlinePeriod": null,
+        "firstStepReason": "拍照留下喜欢的画面，化妆带来自我欣赏的体验。",
+        "firstStep": "打开相机或社交媒体应用查看灵感。",
+        "startSuggested": true,
+        "prioritySuggested": false,
+        "recommendationReason": "属于休闲愿望，且用户表示懒惰，建议放在较后时间，不强制今日完成。",
+        "priority": "low",
+        "evidence": "但是我又很想化妆拍照",
+        "deadline_evidence": null,
+        "priority_evidence": null,
+        "start_evidence": null
+      },
+      {
+        "title": "打扫房间",
+        "description": "需要整理空间，但感到混乱。",
+        "category": "生活",
+        "horizon": "today",
+        "deadline": null,
+        "suggestedStart": null,
+        "startPeriod": null,
+        "deadlinePeriod": null,
+        "firstStepReason": "整洁的空间让日常取用更方便。",
+        "firstStep": "整理桌面或床铺区域。",
+        "startSuggested": true,
+        "prioritySuggested": false,
+        "recommendationReason": "作为家务任务，放在今日较晚时段，避免与写代码冲突。",
+        "priority": "medium",
+        "evidence": "然后我还要打扫房间",
+        "deadline_evidence": null,
+        "priority_evidence": null,
+        "start_evidence": null
+      }
+    ],
+    "cancellations": []
+  }
+}

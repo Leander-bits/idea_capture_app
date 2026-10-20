@@ -1,0 +1,62 @@
+import '../models/task.dart';
+
+const mockTasks = [
+  Task(
+    id: 'website',
+    title: '整理网站改版思路',
+    importantToday: true,
+    category: '工作',
+    suggestedStart: '10:00',
+    priority: TaskPriority.high,
+    source: TaskSource.voice,
+    description: '先整理一份网站改版提纲：哪些地方需要调整、保留哪些页面，以及想要的整体方向。不必一次想全，有个起点就好。',
+    firstStep: '打开一个空白文档，写下网站最需要改善的 3 个地方。',
+    firstStepReason: '建议上午开始，趁思路还清晰。',
+  ),
+  Task(
+    id: 'dentist',
+    title: '预约牙齿检查',
+    importantToday: true,
+    category: '生活',
+    suggestedStart: '12:30',
+    priority: TaskPriority.medium,
+  ),
+  Task(
+    id: 'walk',
+    title: '出门走走，放松一下',
+    importantToday: true,
+    category: '健康',
+    suggestedStart: '17:00',
+    priority: TaskPriority.medium,
+  ),
+  Task(
+    id: 'photos',
+    title: '把旅行照片发给小林',
+    category: '生活',
+    suggestedStart: '不限时间',
+    priority: TaskPriority.low,
+  ),
+  Task(
+    id: 'reading',
+    title: '读完书里的下一章',
+    category: '生活',
+    suggestedStart: '20:30',
+    priority: TaskPriority.low,
+  ),
+  Task(
+    id: 'dinners',
+    title: '安排这周的晚餐',
+    horizon: TaskHorizon.recently,
+    category: '生活',
+    suggestedStart: '明天',
+    priority: TaskPriority.medium,
+  ),
+  Task(
+    id: 'pottery',
+    title: '找一堂周末陶艺课',
+    horizon: TaskHorizon.later,
+    category: '生活',
+    suggestedStart: '下周',
+    priority: TaskPriority.low,
+  ),
+];

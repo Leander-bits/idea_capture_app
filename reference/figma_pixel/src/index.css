@@ -1,0 +1,228 @@
+@import './styles/fonts.css';
+@import 'tailwindcss';
+@import './styles/theme.css';
+
+@layer base {
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button { @apply cursor-pointer; }
+  button:focus-visible, a:focus-visible { @apply outline-2 outline-offset-4 outline-primary; }
+}
+
+/* Shared pixel-world tokens; task copy and controls stay fully readable. */
+.game-workspace {
+  background-color: var(--game-canvas);
+  background-image: radial-gradient(ellipse at 50% 0, var(--game-sky), transparent 65%),
+    repeating-linear-gradient(0deg, transparent 0 47px, color-mix(in srgb, var(--border) 18%, transparent) 47px 48px),
+    repeating-linear-gradient(90deg, transparent 0 47px, color-mix(in srgb, var(--border) 18%, transparent) 47px 48px);
+}
+.game-workspace > header h1 { color: var(--primary); text-shadow: 3px 3px var(--game-shadow); }
+.game-workspace > header h1 > span { color: var(--muted-foreground); text-shadow: none; }
+.pixel-edition { border: 1px solid var(--border); padding: 8px 12px; }
+.game-screen > div:first-child { color: var(--game-purple); letter-spacing: .2em; }
+.pixel-device {
+  border-color: var(--border);
+  box-shadow: 4px 0 var(--game-shadow), -4px 0 var(--game-shadow), 0 5px var(--game-shadow), 0 0 35px color-mix(in srgb, var(--game-purple) 8%, transparent);
+  background-image: linear-gradient(var(--game-sky), transparent 45%);
+}
+.game-screen h1, .game-screen h2 { letter-spacing: .035em; color: var(--foreground); }
+.game-screen h1 { text-shadow: 2px 2px var(--game-shadow); }
+.game-screen h2 { font-weight: 700; }
+.game-screen h2.text-\[17px\]::before {
+  content: ""; display: inline-block; width: 6px; height: 12px;
+  margin-right: 8px; background: var(--game-purple); box-shadow: 2px 2px var(--game-shadow);
+}
+.game-screen button { transition: transform .12s, background-color .12s; }
+.game-screen button:active { transform: translate(2px, 2px); }
+.game-screen svg:not(.pixel-scene) { stroke-linecap: square; stroke-linejoin: miter; }
+.game-screen [class*="rounded"] { border-radius: 0; }
+.game-screen [class*="bg-white"] { background-color: var(--card); }
+.game-screen [class*="text-[#"] { color: var(--muted-foreground); }
+.game-screen [class*="text-[#b75651]"], .pixel-dialog [class*="text-[#b75651]"] { color: var(--danger); }
+.game-screen [class*="border-[#"] { border-color: var(--border); }
+.game-screen [class*="bg-[#e6e7e9]"] { background: var(--muted); border: 1px solid var(--border); padding: 4px; gap: 4px; }
+.game-screen [class*="bg-[#e6e7e9]"] button.bg-white {
+  color: var(--primary); background: var(--secondary); box-shadow: inset 0 -2px var(--primary);
+}
+.quest-card { position: relative; border: 1px solid var(--border); box-shadow: 3px 3px var(--game-shadow); }
+.quest-card + .quest-card { border-top: 0; }
+.quest-card:hover { background: var(--accent); }
+.quest-card > button:first-child > span { border-width: 2px; border-color: var(--game-edge); box-shadow: 2px 2px var(--game-shadow); }
+.quest-card > button:first-child > span.bg-secondary { border-color: var(--primary); }
+.quest-card > button:nth-child(2) { border-bottom: 0; }
+.quest-card > button:nth-child(2) > div:first-child { color: var(--foreground); }
+.game-nav { border-top: 2px solid var(--border); background: var(--game-canvas); }
+.game-nav button { margin: 6px 0; height: 50px; }
+.game-nav button.text-primary { background: var(--secondary); border: 1px solid var(--primary); box-shadow: 2px 2px var(--game-shadow); }
+.game-nav > div:last-child, .pixel-device > div:last-child.bg-\[\#18191b\] { background: var(--game-edge); }
+.adventure-panel { position: relative; overflow: hidden; padding: 14px; border: 2px solid var(--game-edge); background: var(--card); box-shadow: 4px 4px var(--game-shadow); }
+.adventure-panel > div { position: relative; z-index: 1; }
+.adventure-panel > .pixel-scene-compact { position: absolute; top: 0; right: 0; width: 150px; height: 65px; opacity: .45; }
+.adventure-emblem { display: flex; align-items: center; justify-content: center; width: 42px; height: 44px; color: var(--primary); background: var(--secondary); border: 2px solid var(--primary); box-shadow: 3px 3px var(--game-shadow); }
+.quest-progress { position: relative; display: block; height: 12px; overflow: hidden; appearance: none; border: 2px solid var(--game-edge); background: var(--game-shadow); }
+.quest-progress::-webkit-progress-bar { background: var(--game-shadow); }
+.quest-progress::-webkit-progress-value { background: repeating-linear-gradient(90deg, var(--primary) 0 9px, var(--secondary) 9px 12px); transition: width .3s; }
+.quest-progress::-moz-progress-bar { background: var(--primary); }
+.pixel-scene { display: block; flex-shrink: 0; width: 100%; height: 104px; margin-top: 20px; background: var(--game-sky); border-bottom: 2px solid var(--game-edge); image-rendering: pixelated; }
+.pixel-scene-compact { margin: 0; border: 0; }
+.pixel-star { fill: var(--game-highlight); }
+.pixel-moon { fill: var(--game-gold); }
+.pixel-moon-shade { fill: var(--game-pink); }
+.pixel-mountain { fill: var(--game-mountain); }
+.pixel-mountain-near { fill: var(--game-mountain-near); }
+.pixel-ground, .pixel-character-shadow { fill: var(--game-shadow); }
+.pixel-grass { fill: var(--game-purple); }
+.pixel-character { fill: var(--primary); }
+.pixel-face { fill: var(--game-shadow); }
+.pixel-sword { fill: var(--game-gold); }
+.capture-orb {
+  position: relative; background: var(--accent); color: var(--game-purple);
+  border: 3px solid var(--game-purple);
+  box-shadow: 6px 6px var(--game-shadow), 0 0 0 8px var(--background), 0 0 0 10px var(--border), 0 0 36px color-mix(in srgb, var(--game-purple) 22%, transparent);
+}
+.capture-orb::before, .capture-orb::after { content: ""; position: absolute; width: 8px; height: 8px; background: var(--game-gold); box-shadow: 0 -5px var(--game-gold), 0 5px var(--game-gold), -5px 0 var(--game-gold), 5px 0 var(--game-gold); }
+.capture-orb::before { top: -24px; right: -25px; }
+.capture-orb::after { bottom: 2px; left: -30px; width: 4px; height: 4px; background: var(--game-pink); }
+.quest-properties, .quest-hint { border: 1px solid var(--game-edge); box-shadow: 4px 4px var(--game-shadow); }
+.quest-properties svg { color: var(--game-purple) !important; }
+.quest-hint { border-left: 3px solid var(--game-purple); }
+.quest-hint > div:last-child { color: var(--muted-foreground); border-color: var(--border); }
+.game-screen button.bg-white, .game-screen button.bg-secondary { border: 1px solid var(--game-edge); box-shadow: 3px 3px var(--game-shadow); }
+.game-screen textarea, .game-screen input { color: var(--foreground); caret-color: var(--primary); }
+.pixel-dialog { border: 2px solid var(--game-purple); box-shadow: 6px 6px var(--game-shadow); }
+.pixel-dialog::backdrop { background: color-mix(in srgb, var(--game-canvas) 80%, transparent); backdrop-filter: blur(4px); }
+.game-screen [role="status"] { border-color: var(--primary); box-shadow: 4px 4px var(--game-shadow); }
+.game-screen ::-webkit-scrollbar { width: 3px; }
+.game-screen ::-webkit-scrollbar-thumb { background: var(--game-edge); }
+.pixel-icon { width: 24px; height: 24px; flex-shrink: 0; image-rendering: pixelated; filter: drop-shadow(2px 2px var(--game-shadow)); }
+.pixel-gold { color: var(--game-gold); }
+.pixel-gem-shine { fill: var(--game-highlight); }
+.pixel-castle { fill: var(--game-highlight); }
+.task-category-icon { width: 16px; height: 16px; color: var(--game-purple); }
+.quest-card:has(.task-category-icon) { border-left: 3px solid var(--game-purple); }
+.daily-adventure { padding: 16px; border-color: var(--game-purple); background: var(--game-sky); }
+.daily-adventure::before, .daily-adventure::after {
+  content: ""; position: absolute; width: 8px; height: 8px; background: var(--game-gold); z-index: 2;
+}
+.daily-adventure::before { top: -1px; left: -1px; }
+.daily-adventure::after { bottom: -1px; right: -1px; }
+.daily-adventure > .pixel-scene { width: calc(100% + 32px); margin: 14px -16px 0; height: 110px; border-color: var(--game-mountain-near); }
+.adventure-caption { margin-top: 10px; font-size: 11px; letter-spacing: .08em; color: var(--muted-foreground); }
+.energy-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.energy-slot {
+  display: flex; align-items: center; justify-content: center; height: 36px;
+  border: 2px solid var(--border); color: var(--game-edge); background: var(--game-shadow);
+  box-shadow: inset 0 -3px var(--background);
+}
+.energy-slot .pixel-icon { width: 19px; height: 19px; }
+.energy-slot.charged { background: var(--secondary); border-color: var(--primary); color: var(--primary); animation: energy-charge .35s steps(4); }
+.daily-loot { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--game-edge); color: var(--muted-foreground); font-size: 10px; }
+.daily-loot > svg { color: var(--game-gold); }
+.daily-loot.unlocked { color: var(--game-gold); }
+.ai-caption { display: flex; align-items: center; justify-content: center; gap: 7px; }
+.ai-caption .pixel-icon { width: 14px; height: 14px; color: var(--game-purple); }
+.pixel-capture-scene { border: 1px solid var(--border); background: var(--game-sky); }
+.capture-grid { fill: var(--game-mountain); opacity: .3; }
+.capture-spark, .capture-controls { fill: var(--game-gold); }
+.capture-note { fill: var(--game-pink); }
+.capture-signal { fill: var(--game-highlight); }
+.capture-antenna, .capture-wave { fill: var(--primary); }
+.capture-machine { fill: var(--game-purple); }
+.capture-desk { fill: var(--game-mountain-near); }
+.capture-files { fill: var(--game-highlight); }
+.pixel-capture-scene { --capture-beat: 1.6s; }
+.pixel-capture-scene.is-listening { --capture-beat: .8s; }
+.capture-floating-note { animation: capture-note-float 3s steps(6) infinite; }
+.capture-note-right { animation-delay: -1.5s; }
+.pixel-capture-scene .capture-spark { animation: capture-shimmer 3s steps(3) infinite; }
+.pixel-capture-scene .capture-antenna { animation: capture-shimmer var(--capture-beat) steps(3) infinite; }
+.capture-flow .capture-signal { animation: capture-data-flow var(--capture-beat) steps(4) infinite; }
+.capture-flow .capture-signal:nth-child(2), .capture-flow .capture-signal:nth-child(5) { animation-delay: -.4s; }
+.capture-flow .capture-signal:nth-child(3) { animation-delay: -.8s; }
+.capture-wave-bars .capture-wave {
+  transform-box: fill-box; transform-origin: center;
+  animation: capture-wave-dance var(--capture-beat) steps(4) infinite;
+}
+.capture-wave-bars .capture-wave:nth-child(2n) { animation-delay: -.3s; }
+.capture-wave-bars .capture-wave:nth-child(3n) { animation-delay: -.7s; }
+@keyframes capture-note-float { 50% { transform: translateY(-4px); } }
+@keyframes capture-shimmer { 50% { opacity: .45; } }
+@keyframes capture-data-flow { 0%, 100% { opacity: .2; } 40%, 65% { opacity: 1; } }
+@keyframes capture-wave-dance { 0%, 100% { transform: scaleY(.5); } 40% { transform: scaleY(1); } 70% { transform: scaleY(.7); } }
+.game-screen [class*="bg-[#e6e7e9]"] button { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.game-screen [class*="bg-[#e6e7e9]"] button .pixel-icon { width: 14px; height: 14px; }
+.pixel-reward {
+  position: fixed; z-index: 50; top: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 14px; width: min(340px, calc(100vw - 32px));
+  padding: 18px; border: 2px solid var(--primary); background: var(--card);
+  box-shadow: 5px 5px var(--game-shadow), 0 0 30px color-mix(in srgb, var(--primary) 15%, transparent);
+  pointer-events: none; animation: reward-appear .35s steps(5) both;
+}
+.pixel-reward > .pixel-icon { width: 36px; height: 36px; color: var(--primary); animation: reward-bounce .7s steps(4) 3; }
+.pixel-reward p { color: var(--primary); font-size: 15px; font-weight: 700; }
+.pixel-reward span { display: block; margin-top: 5px; color: var(--muted-foreground); font-size: 11px; }
+.grand-reward { border-color: var(--game-gold); }
+.grand-reward p, .grand-reward > .pixel-icon { color: var(--game-gold); }
+.reward-sparks { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.reward-sparks i { position: absolute; width: 5px; height: 5px; background: var(--game-gold); animation: pixel-spark 1.2s steps(8) 2; }
+.reward-sparks i:nth-child(3n) { background: var(--game-pink); }
+.reward-sparks i:nth-child(3n + 1) { background: var(--primary); }
+.reward-sparks i:nth-child(1) { left: 5%; top: 15%; }
+.reward-sparks i:nth-child(2) { left: 15%; top: 90%; animation-delay: .1s; }
+.reward-sparks i:nth-child(3) { left: 27%; top: 0; animation-delay: .2s; }
+.reward-sparks i:nth-child(4) { left: 37%; top: 100%; animation-delay: .3s; }
+.reward-sparks i:nth-child(5) { left: 48%; top: 5%; }
+.reward-sparks i:nth-child(6) { left: 58%; top: 100%; animation-delay: .2s; }
+.reward-sparks i:nth-child(7) { left: 70%; top: 0; animation-delay: .1s; }
+.reward-sparks i:nth-child(8) { left: 82%; top: 100%; animation-delay: .3s; }
+.reward-sparks i:nth-child(9) { left: 94%; top: 10%; }
+.reward-sparks i:nth-child(10) { left: 100%; top: 60%; animation-delay: .1s; }
+.reward-sparks i:nth-child(11) { left: 0; top: 65%; animation-delay: .2s; }
+.reward-sparks i:nth-child(12) { left: 65%; top: 100%; animation-delay: .3s; }
+@keyframes pixel-spark { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-40px); opacity: 0; } }
+@keyframes reward-appear { from { opacity: 0; translate: 0 -12px; } to { opacity: 1; translate: 0 0; } }
+@keyframes reward-bounce { 50% { transform: translateY(-5px); } }
+@keyframes energy-charge { from { opacity: .4; } to { opacity: 1; } }
+.adventure-trail { fill: var(--game-gold); opacity: .45; }
+.adventure-walker { transform: translateX(-106px); transition: transform .75s steps(12, end); }
+.energy-1 .adventure-walker { transform: translateX(-44px); }
+.energy-2 .adventure-walker { transform: translateX(18px); }
+.energy-3 .adventure-walker { transform: translateX(80px); }
+.walker-idle { animation: adventurer-idle 1.8s steps(2) infinite; }
+.walker-step { animation: adventurer-walk .15s steps(2) 5; }
+.treasure-lid { transform-box: fill-box; transform-origin: right bottom; transform: rotate(0); }
+.treasure-glow { opacity: 0; }
+.energy-3 .treasure-lid { animation: chest-open .55s steps(5) .8s forwards; }
+.energy-3 .treasure-glow { animation: treasure-rise .65s steps(6) 1.1s forwards; }
+.adventure-stage .pixel-star { animation: star-twinkle 3s steps(2) infinite; }
+@keyframes adventurer-idle { 50% { transform: translateY(-1px); } }
+@keyframes adventurer-walk { 50% { transform: translateY(-3px); } }
+@keyframes chest-open { to { transform: translateY(-3px) rotate(55deg); } }
+@keyframes treasure-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(-3px); } }
+@keyframes star-twinkle { 50% { opacity: .45; } }
+.adventure-reward-dialog { width: min(340px, calc(100vw - 32px)); padding: 30px 24px 22px; border-color: var(--game-gold); overflow: visible; }
+.reward-badge-art { position: relative; display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; margin: 0 auto 24px; border: 3px solid var(--game-gold); background: var(--game-sky); box-shadow: 6px 6px var(--game-shadow), 0 0 30px color-mix(in srgb, var(--game-gold) 15%, transparent); }
+.reward-badge-art > .pixel-icon { width: 54px; height: 54px; color: var(--game-gold); animation: reward-bounce 1s steps(4) infinite; }
+.reward-eyebrow { color: var(--game-gold); letter-spacing: .2em; font-size: 11px; }
+.adventure-reward-dialog h2 { margin-top: 10px; font-size: 23px; font-weight: 700; }
+.reward-description { margin-top: 12px; color: var(--muted-foreground); font-size: 12px; line-height: 1.9; }
+.earned-badge { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; padding: 13px 8px; border: 1px dashed var(--game-gold); color: var(--game-gold); background: var(--game-sky); font-size: 12px; }
+.earned-badge .pixel-icon { width: 18px; height: 18px; }
+.reward-dismiss { width: 100%; margin-top: 24px; padding: 13px; background: var(--primary); color: var(--primary-foreground); border: 2px solid var(--secondary); box-shadow: 4px 4px var(--game-shadow); font-size: 14px; font-weight: 700; }
+.reward-footnote { margin-top: 14px; color: var(--muted-foreground); font-size: 10px; line-height: 1.8; }
+@media (min-width: 1024px) { .pixel-device { border-radius: 16px; } }
+@media (prefers-reduced-motion: reduce) {
+  .game-screen button, .quest-progress::-webkit-progress-value { transition: none; }
+  .capture-orb { animation: none; }
+  .pixel-reward, .pixel-reward > .pixel-icon, .reward-sparks i, .energy-slot.charged { animation: none; }
+  .reward-sparks { display: none; }
+  .adventure-walker { transition: none; }
+  .walker-idle, .walker-step, .adventure-stage .pixel-star, .reward-badge-art > .pixel-icon { animation: none; }
+  .energy-3 .treasure-lid { animation: none; transform: translateY(-3px) rotate(55deg); }
+  .energy-3 .treasure-glow { animation: none; opacity: 1; }
+  .pixel-capture-scene .capture-floating-note,
+  .pixel-capture-scene .capture-spark,
+  .pixel-capture-scene .capture-antenna,
+  .capture-flow .capture-signal,
+  .capture-wave-bars .capture-wave { animation: none; }
+}
